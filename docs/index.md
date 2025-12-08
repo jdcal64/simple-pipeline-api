@@ -1,7 +1,7 @@
 # NiFi Environment Setup
 **John Calandra | www.jctechdocs.com**  
 **email: john@jctechdocs.com**  
-**05 Dec 2025**
+**05 Dec 2025**  
 ___
 ## Overview
 This article will show you how to set up an envrionment on which you can build an Apache NiFi pipeline. It is assumed you have knowledge of Linux.
