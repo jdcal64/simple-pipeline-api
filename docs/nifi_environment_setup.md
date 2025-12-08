@@ -62,15 +62,15 @@ You are in the sudo group, but for replacing \<usergroup> use the named group.  
 
     a) Find your Java installation path: dirname \$(dirname \$(readlink -f $(which javac)))  
 
-    My vms return: /usr/lib/jvm/java-25-openjdk-amd64  
+    * My vms return: /usr/lib/jvm/java-25-openjdk-amd64  
 
     b) Set $JAVA_HOME in .bashrc: echo "export JAVA_HOME=/usr/lib/jvm/java-25-openjdk-amd64" >> /home/<username>/.bashrc  
 
-    .bashrc runs each time you start an interactive shell session and part of what it does is set environment variables like $JAVA_HOME  
+    * .bashrc runs each time you start an interactive shell session and part of what it does is set environment variables like $JAVA_HOME  
 
     c) Run .bashrc manually: source /home/<username>/.bashrc  
 
-    Running .bashrc makes $JAVA_HOME available to your environment
+    * Running .bashrc makes $JAVA_HOME available to your environment
 
 1. Set Permissions
 
@@ -87,6 +87,8 @@ You are in the sudo group, but for replacing \<usergroup> use the named group.  
     /opt/nifi/bin/nifi.sh set-single-user-credentials \<username> <12-character minimum user password>  
     b) Start NiFi: /opt/nifi/bin/nifi.sh start  
     c) Verify NiFi process status: /opt/nifi/bin/nifi.sh status
+
+    * The last line of output includes: INFO [main] org.apache.nifi.bootstratp.Command Status: UP
 
 1. Verify NiFi Interface is accessible and Login
 
