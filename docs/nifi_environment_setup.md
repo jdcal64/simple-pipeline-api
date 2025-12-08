@@ -93,7 +93,7 @@ You are in the sudo group, but for replacing \<usergroup> use the named group.  
     a) In a browser, enter in address bar: https://localhost:8443/nifi (8443 is NiFi default port)  
     b) Login using the credentials previously set  
     c) You should now see the NiFi interface  
-    ![NiFi interface](https://drive.google.com/file/d/1-m3Tq4OKH87wGOMbUEGiQ2Vtr7h75hLH/view?usp=drive_link)  
+    ![NiFi interface](nifi_interface_01.png)  
 
     * If you have accessed the NiFi interface, you are ready to build a pipeline. If not, see the Troubleshooting page.  
     * If you want to stop NiFi: Start NiFi: /opt/nifi/bin/nifi.sh stop
