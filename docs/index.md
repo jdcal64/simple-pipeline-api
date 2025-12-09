@@ -4,9 +4,9 @@
 **05 Dec 2025**  
   
 ## Overview
-This article will show you how to set up an envrionment on which you can build an Apache NiFi pipeline. The operating system (OS) and command type of the virtual machine (vm) used in this article is Ubuntu Linux and Bash. Note the following:
-* A different OS and command type can be used, if you know how to translate the differences.
-* It is assumed you have Linux knowledge.
+This article will show you how to set up an envrionment in which you can build an Apache NiFi pipeline. The operating system (OS) and command type of the virtual machine (vm) used in this article are Ubuntu Linux and Bash. Note the following:
+* It is assumed you have knowledge of Linux.
+* A different Linux OS and command type can be used, if you can translate differences.
 * The following technologies/versions are used:
     * OpenJDK/21
     * Apache NiFi/2.6.0  
@@ -16,9 +16,9 @@ This article will show you how to set up an envrionment on which you can build a
     * NiFi release branch
 
 ### Notes
-* Installation Directory: The /opt directory, used for installing apps that are not part of the OS.
+* NiFi Installation Directory: The /opt directory, which is used for installing apps that are not part of the OS.
 * User Context: Log in as the default user created during the VM setup.
-* Interface: All actions requiring command input are done in a terminal window. 
+* Interface: All actions requiring command input are done in a Linux terminal window. 
 * Command Type: Bash commands, which is standard for Ubuntu Linux.
 * Replace: 
     * \<username> with your vm username  
@@ -40,7 +40,7 @@ You are in the sudo group, but for replacing \<usergroup> use the named group.  
     a) Find your Java installation path: dirname \$(dirname \$(readlink -f $(which javac)))  
     * My vms return: /usr/lib/jvm/java-21-openjdk-amd64  
     
-    b) Set $JAVA_HOME in .bashrc:  echo "export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64" >> /home/<username>/.bashrc  
+    b) Set $JAVA_HOME in .bashrc:  echo "export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64" >> /home/\<username>/.bashrc  
     * When you open a terminal window, .bashrc runs and sets environment variables like $JAVA_HOME  
 
     c) Verify modification: cat /home/\<username>/.bashrc  
