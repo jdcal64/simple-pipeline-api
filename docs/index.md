@@ -35,6 +35,23 @@ You are in the sudo group, but for replacing \<usergroup> use the named group.  
     b) Install JDK: sudo apt install openjdk-21-jdk-headless  
     c) Verify installation: java --version
 
+1. Set JAVA_HOME to prevent the JAVA_HOME warning message and ensures stability  
+
+    a) Find your Java installation path: dirname \$(dirname \$(readlink -f $(which javac)))  
+    * My vms return: /usr/lib/jvm/java-21-openjdk-amd64  
+    
+    b) Set $JAVA_HOME in .bashrc:  echo "export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64" >> /home/<username>/.bashrc  
+    * When you open a terminal window, .bashrc runs and sets environment variables like $JAVA_HOME  
+
+    c) Verify modification: cat /home/\<username>/.bashrc  
+    * At the bottom of the file output you should see: export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
+
+    d) Run .bashrc manually: source /home/\<username>/.bashrc  
+    * Running .bashrc makes $JAVA_HOME available for the current and all new terminal sessions (only needed after modifications)
+
+    e) Verify JAVA_HOME: echo $JAVA_HOME
+    * Should return: /usr/lib/jvm/java-21-openjdk-amd64
+
 ## NiFi Installation
 
 1. Download NiFi
@@ -54,21 +71,7 @@ You are in the sudo group, but for replacing \<usergroup> use the named group.  
 1. Rename/Move the NiFi directory for manageability
 
     a) Naviage to opt directory: cd /opt  
-    b) Rename NiFi directory: sudo mv nifi-2.6.0/ nifi/
-
-1. Set JAVA_HOME to prevent the JAVA_HOME warning message and ensures stability  
-
-    a) Find your Java installation path: dirname \$(dirname \$(readlink -f $(which javac)))  
-
-    * My vms return: /usr/lib/jvm/java-21-openjdk-amd64  
-
-    b) Set $JAVA_HOME in .bashrc: echo "export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64" >> /home/<username>/.bashrc  
-
-    * .bashrc runs each time you start an interactive shell session and part of what it does is set environment variables like $JAVA_HOME  
-
-    c) Run .bashrc manually: source /home/<username>/.bashrc  
-
-    * Running .bashrc makes $JAVA_HOME available for the current and all new terminal sessions
+    b) Rename NiFi directory: sudo mv nifi-2.6.0/ nifi/  
 
 1. Set Permissions
 
@@ -98,3 +101,4 @@ You are in the sudo group, but for replacing \<usergroup> use the named group.  
 
     * If you have accessed the NiFi interface, you are ready to build a pipeline. If not, see the Troubleshooting page.  
     * If you want to stop NiFi: /opt/nifi/bin/nifi.sh stop
+
