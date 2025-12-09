@@ -79,7 +79,8 @@ You are in the sudo group, but for replacing \<usergroup> use the named group.  
     * The NiFi startup script: /opt/nifi/bin/nifi.sh  
     * All NiFi directories: /opt/nifi, /opt/nifi/logs, /opt/nifi/work, and all repositories  
 
-    a) Set Ownership: sudo chown -R <username>:<usergroup> /opt/nifi  
+    a) Set Ownership: sudo chown -R <username>:<usergroup> /opt/nifi
+     
     b) Set Permissions: sudo chmod -R 755 /opt/nifi  
 
 1. Set NiFi credentials and start the interface
