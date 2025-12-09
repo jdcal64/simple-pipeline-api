@@ -31,8 +31,10 @@ You are in the sudo group, but for replacing \<usergroup> use the named group.  
 
 1. Install headless current Java Development Kit (headless means install JDK without a GUI, which is not needed for NiFi)
 
-    a) Update package list: sudo apt update  
-    b) Install JDK: sudo apt install openjdk-21-jdk-headless  
+    a) Update package list: sudo apt update
+   
+    b) Install JDK: sudo apt install openjdk-21-jdk-headless (or most current LTS release)
+   
     c) Verify installation: java --version
 
 1. Set JAVA_HOME to prevent the JAVA_HOME warning message and ensures stability  
@@ -56,21 +58,28 @@ You are in the sudo group, but for replacing \<usergroup> use the named group.  
 
 1. Download NiFi
 
-    a) Open a browser and navigate to Apache Download: https://nifi.apache.org/download/  
-    b) Select Binaries/NiFi Standard 2.6.0 (or the most current version).  
-    c) The selection is a zip file and will be downloaded to the following directory: /home/\<username>/Downloads directory  
+    a) Open a browser and navigate to Apache Download: https://nifi.apache.org/download/
+   
+    b) Select Binaries/NiFi Standard 2.6.0 (or the most current release)
+   
+    c) The selection is a zip file and will be downloaded to the following directory: /home/\<username>/Downloads directory
+   
     d) Verify the download: ls ~/Downloads (verify download)
 
 1. Install NiFi into /opt
 
-    a) Navigate to Downloads directory: cd /home/\<username>/Downloads  
-    b) Install unzip: sudo apt install unzip  
-    c) Install NiFi: sudo unzip /home/<username>/Downloads/nifi-2.6.0-bin.zip -d /opt    
+    a) Navigate to Downloads directory: cd /home/\<username>/Downloads
+   
+    b) Install unzip: sudo apt install unzip
+   
+    c) Install NiFi: sudo unzip /home/<username>/Downloads/nifi-2.6.0-bin.zip -d /opt
+   
     d) Verify insallation: ls -l /opt
 
 1. Rename/Move the NiFi directory for manageability
 
-    a) Naviage to opt directory: cd /opt  
+    a) Naviage to opt directory: cd /opt
+   
     b) Rename NiFi directory: sudo mv nifi-2.6.0/ nifi/  
 
 1. Set Permissions
@@ -86,16 +95,20 @@ You are in the sudo group, but for replacing \<usergroup> use the named group.  
 1. Set NiFi credentials and start the interface
 
     a) Set NiFi credentials (This command must be run first to enable secure login to the NiFi UI):  
-    /opt/nifi/bin/nifi.sh set-single-user-credentials \<username> <12-character minimum user password>  
-    b) Start NiFi: /opt/nifi/bin/nifi.sh start  
+    /opt/nifi/bin/nifi.sh set-single-user-credentials \<username> <12-character minimum user password>
+   
+    b) Start NiFi: /opt/nifi/bin/nifi.sh start
+   
     c) Verify NiFi process status: /opt/nifi/bin/nifi.sh status
 
     * The last line of output includes: INFO [main] org.apache.nifi.bootstratp.Command Status: UP
 
 1. Verify NiFi Interface is accessible and Login
 
-    a) In a browser, enter in address bar: https://localhost:8443/nifi (8443 is NiFi default port)  
-    b) Login using the credentials previously set  
+    a) In a browser, enter in address bar: https://localhost:8443/nifi (8443 is NiFi default port)
+   
+    b) Login using the credentials set in the last step
+   
     c) You should now see the NiFi interface
    
     ![NiFi interface](nifi_interface_01.png)  
