@@ -4,9 +4,9 @@
 **05 Dec 2025**  
   
 ## Overview
-This article will show you how to set up an envrionment in which you can build an Apache NiFi pipeline. The operating system (OS) and command type of the virtual machine (vm) used in this article are Ubuntu Linux and Bash. Note the following:
-* It is assumed you have knowledge of Linux.
-* A different Linux OS and command type can be used, if you can translate differences.
+This article will show you how to set up an envrionment on which you can build an Apache NiFi pipeline. The operating system (OS) and command type of the virtual machine (vm) used in this article is Ubuntu Linux and Bash. Note the following:
+* A different OS and command type can be used, if you know how to translate the differences.
+* It is assumed you have Linux knowledge.
 * The following technologies/versions are used:
     * OpenJDK/21
     * Apache NiFi/2.6.0  
@@ -16,9 +16,9 @@ This article will show you how to set up an envrionment in which you can build a
     * NiFi release branch
 
 ### Notes
-* NiFi Installation Directory: The /opt directory, which is used for installing apps that are not part of the OS.
+* Installation Directory: The /opt directory, used for installing apps that are not part of the OS.
 * User Context: Log in as the default user created during the VM setup.
-* Interface: All actions requiring command input are done in a Linux terminal window. 
+* Interface: All actions requiring command input are done in a terminal window. 
 * Command Type: Bash commands, which is standard for Ubuntu Linux.
 * Replace: 
     * \<username> with your vm username  
@@ -31,10 +31,8 @@ You are in the sudo group, but for replacing \<usergroup> use the named group.  
 
 1. Install headless current Java Development Kit (headless means install JDK without a GUI, which is not needed for NiFi)
 
-    a) Update package list: sudo apt update
-     
-    b) Install JDK: sudo apt install openjdk-21-jdk-headless (or most current LTS release)
-     
+    a) Update package list: sudo apt update  
+    b) Install JDK: sudo apt install openjdk-21-jdk-headless  
     c) Verify installation: java --version
 
 1. Set JAVA_HOME to prevent the JAVA_HOME warning message and ensures stability  
@@ -42,7 +40,7 @@ You are in the sudo group, but for replacing \<usergroup> use the named group.  
     a) Find your Java installation path: dirname \$(dirname \$(readlink -f $(which javac)))  
     * My vms return: /usr/lib/jvm/java-21-openjdk-amd64  
     
-    b) Set $JAVA_HOME in .bashrc:  echo "export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64" >> /home/\<username>/.bashrc  
+    b) Set $JAVA_HOME in .bashrc:  echo "export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64" >> /home/<username>/.bashrc  
     * When you open a terminal window, .bashrc runs and sets environment variables like $JAVA_HOME  
 
     c) Verify modification: cat /home/\<username>/.bashrc  
@@ -58,28 +56,21 @@ You are in the sudo group, but for replacing \<usergroup> use the named group.  
 
 1. Download NiFi
 
-    a) Open a browser and navigate to Apache Download: https://nifi.apache.org/download/
-     
-    b) Select Binaries/NiFi Standard 2.6.0 (or the most current release)
-     
-    c) The selection is a zip file and will be downloaded to the following directory: /home/\<username>/Downloads directory
-     
+    a) Open a browser and navigate to Apache Download: https://nifi.apache.org/download/  
+    b) Select Binaries/NiFi Standard 2.6.0 (or the most current version).  
+    c) The selection is a zip file and will be downloaded to the following directory: /home/\<username>/Downloads directory  
     d) Verify the download: ls ~/Downloads (verify download)
 
 1. Install NiFi into /opt
 
-    a) Navigate to Downloads directory: cd /home/\<username>/Downloads
-     
-    b) Install unzip: sudo apt install unzip
-     
-    c) Install NiFi: sudo unzip /home/<username>/Downloads/nifi-2.6.0-bin.zip -d /opt
-     
+    a) Navigate to Downloads directory: cd /home/\<username>/Downloads  
+    b) Install unzip: sudo apt install unzip  
+    c) Install NiFi: sudo unzip /home/<username>/Downloads/nifi-2.6.0-bin.zip -d /opt    
     d) Verify insallation: ls -l /opt
 
 1. Rename/Move the NiFi directory for manageability
 
-    a) Naviage to opt directory: cd /opt
-     
+    a) Naviage to opt directory: cd /opt  
     b) Rename NiFi directory: sudo mv nifi-2.6.0/ nifi/  
 
 1. Set Permissions
@@ -88,31 +79,27 @@ You are in the sudo group, but for replacing \<usergroup> use the named group.  
     * The NiFi startup script: /opt/nifi/bin/nifi.sh  
     * All NiFi directories: /opt/nifi, /opt/nifi/logs, /opt/nifi/work, and all repositories  
 
-    a) Set Ownership: sudo chown -R <username>:<usergroup> /opt/nifi
-       
+    a) Set Ownership: sudo chown -R <username>:<usergroup> /opt/nifi  
     b) Set Permissions: sudo chmod -R 755 /opt/nifi  
-  
+
 1. Set NiFi credentials and start the interface
 
     a) Set NiFi credentials (This command must be run first to enable secure login to the NiFi UI):  
-    /opt/nifi/bin/nifi.sh set-single-user-credentials \<username> <12-character minimum user password>
-     
-    b) Start NiFi: /opt/nifi/bin/nifi.sh start
-     
+    /opt/nifi/bin/nifi.sh set-single-user-credentials \<username> <12-character minimum user password>  
+    b) Start NiFi: /opt/nifi/bin/nifi.sh start  
     c) Verify NiFi process status: /opt/nifi/bin/nifi.sh status
-  
+
     * The last line of output includes: INFO [main] org.apache.nifi.bootstratp.Command Status: UP
 
 1. Verify NiFi Interface is accessible and Login
 
-    a) In a browser, enter in address bar: https://localhost:8443/nifi (8443 is NiFi default port)
-     
-    b) Login using the credentials set in the last step
-     
+    a) In a browser, enter in address bar: https://localhost:8443/nifi (8443 is NiFi default port)  
+    b) Login using the credentials previously set  
     c) You should now see the NiFi interface
    
     ![NiFi interface](nifi_interface_01.png)  
 
     * If you have accessed the NiFi interface, you are ready to build a pipeline. If not, see the Troubleshooting page.  
     * If you want to stop NiFi: /opt/nifi/bin/nifi.sh stop
+
 
