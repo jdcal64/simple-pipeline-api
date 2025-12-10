@@ -73,14 +73,13 @@ You are in the sudo group, but for replacing \<usergroup> use the named group.  
     a) Naviage to opt directory: cd /opt  
     b) Rename NiFi directory: sudo mv nifi-2.6.0/ nifi/  
 
-1. Set Permissions
+1. Set Permissions & Ownership
 
-    * Grant ownership to your user to allow running NiFi without using sudo, which is a security risk.  
-    * The NiFi startup script: /opt/nifi/bin/nifi.sh  
-    * All NiFi directories: /opt/nifi, /opt/nifi/logs, /opt/nifi/work, and all repositories  
+    * Allows running NiFi without using sudo, which is a security risk     
+    * -R (recursive) sets permissons/ownership on all NiFi directories  
 
-    a) Set Ownership: sudo chown -R <username>:<usergroup> /opt/nifi    \
-    b) Set Permissions: sudo chmod -R 755 /opt/nifi  
+    a) Set Permissions: sudo chmod -R 755 /opt/nifi  
+    b) Set Ownership: sudo chown -R \<username>:\<usergroup> /opt/nifi  
 
 1. Set NiFi credentials and start the interface
 
