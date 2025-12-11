@@ -100,5 +100,17 @@ You are in the sudo group, but for replacing \<usergroup> use the named group.  
 
     * If you have accessed the NiFi interface, you are ready to build a pipeline. If not, see the Troubleshooting page.  
     * If you want to stop NiFi: /opt/nifi/bin/nifi.sh stop
-
+     
+## Remote Connections
+* Note that this setup does not allow remote connections to the NiFi interface (port 8443 has not been opened). 
+* If you do not want remote connections, verify that NiFi is not listening on port 8443: sudo ss -tuln | grep 8443  
+If port 8443 is closed, no output is returned  
+* To allow (remote) TCP connections to port 8443:  
+    a) This is case-senstive: sudo ufw allow 8443/tcp  
+    b) Verify the port is open: sudo ss -tuln | grep 8443  
+    Output should be one line that begins with TCP LISTEN  
+    c) Verify that there is a firewall rule that allows remote access to port 8443: sudo ufw status verbose  
+    Output should include 8443/tcp ALLOW IN ANYWHERE  
+    d) To check port connectivity: nc -zv 127.0.0.1 8443  
+    Output should return that the connection succeeded!
 
