@@ -82,14 +82,16 @@ You are in the sudo group, but for replacing \<usergroup> use the named group.  
     b) Set Ownership: sudo chown -R \<username>:\<usergroup> /opt/nifi  
 
 1. Set JAVA_HOME in the NiFi environment configuration to suppress the "not set" warning and ensure service stability.
+   (The instructions are written for using vi editor, but you can use your editor of choice.)  
 
     a) Find your Java path: Run echo $JAVA_HOME  
     b) Copy the path: Highlight and copy the resulting directory path  
     c) Navigate to NiFi bin: cd /opt/nifi/bin  
     d) Edit the environment file: vi nifi-env.sh  
-    e) Edit the line: * Scroll to the # export JAVA_HOME=... line
-    f) Press i to enter Insert mode
-    g) Remove the # and paste your path after the =
+    e) Edit the line: # export JAVA_HOME=...
+        i) Remove # sign (place cursor on # and press x)  
+        ii) Remove everything after = sign (place cursor on character after = sign and press shift+d)
+        iii) Press i for insert mode and paste the directory path with no spaces after the = sign
     h) Save and Exit: Press Esc, then type :wq and hit Enter
    
 1. Set NiFi credentials and start the interface
