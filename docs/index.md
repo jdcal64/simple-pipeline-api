@@ -38,7 +38,7 @@ You are in the sudo group, but for replacing \<usergroup> use the named group.  
 1. Set JAVA_HOME to prevent the JAVA_HOME warning message and ensures stability  
 
     a) Find your Java installation path: dirname `$(dirname $(readlink -f $(which javac)))`  
-    * My vms return: /usr/lib/jvm/java-21-openjdk-amd64  
+    * My vms returns: /usr/lib/jvm/java-21-openjdk-amd64  
     
     b) Set $JAVA_HOME in .bashrc:  echo "export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64" >> /home/<username>/.bashrc  
     * When you open a terminal window, .bashrc runs and sets environment variables like $JAVA_HOME  
