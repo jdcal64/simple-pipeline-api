@@ -96,10 +96,10 @@ You are in the sudo group, but for replacing \<usergroup> use the named group.  
 
     a) Set NiFi credentials (This command must be run first to enable secure login to the NiFi UI):  
     /opt/nifi/bin/nifi.sh set-single-user-credentials \<username> <12-character minimum user password>  
-    b) Start NiFi: /opt/nifi/bin/nifi.sh start  
+    b) Start NiFi: /opt/nifi/bin/nifi.sh start 
     c) Verify NiFi process status: /opt/nifi/bin/nifi.sh status
 
-    * The last line of output includes: INFO [main] org.apache.nifi.bootstratp.Command Status: UP
+    * The last line of output includes: INFO [main] org.apache.nifi.bootstratp.Command Status: UP.  If you see "communication failed", NiFi may still be starting; wait 20 seconds, and repeat the status command.
 
 1. Verify NiFi Interface is accessible and Login
 
