@@ -35,7 +35,7 @@ You are in the sudo group, but for replacing \<usergroup> use the named group.  
     b) Install JDK: sudo apt install openjdk-21-jdk-headless  
     c) Verify installation: java --version
 
-1. Set JAVA_HOME to prevent the JAVA_HOME warning message and ensures stability  
+1. Set JAVA_HOME  
 
     a) Find your Java installation path: dirname `$(dirname $(readlink -f $(which javac)))`  
     * My vms returns: /usr/lib/jvm/java-21-openjdk-amd64  
@@ -65,7 +65,7 @@ You are in the sudo group, but for replacing \<usergroup> use the named group.  
 
     a) Navigate to Downloads directory: cd /home/\<username>/Downloads  
     b) Install unzip: sudo apt install unzip  
-    c) Install NiFi: sudo unzip /home/<username>/Downloads/nifi-2.6.0-bin.zip -d /opt    
+    c) Install NiFi: sudo unzip nifi-2.6.0-bin.zip -d /opt    
     d) Verify insallation: ls -l /opt
 
 1. Rename/Move the NiFi directory for manageability
@@ -81,6 +81,16 @@ You are in the sudo group, but for replacing \<usergroup> use the named group.  
     a) Set Permissions: sudo chmod -R 755 /opt/nifi  
     b) Set Ownership: sudo chown -R \<username>:\<usergroup> /opt/nifi  
 
+1. Set JAVA_HOME to prevent the JAVA_HOME warning message and ensures stability (these instructions are for the vi editor, but you can use the editor of your choice) 
+
+    a) Display your JAVA_HOME path: echo $JAVA_HOME  
+    b) Highlight the variable, right-click and copy it  
+    c) Navigate to bin directory: cd /opt/nifi/bin  
+    d) Open nifi-env.sh for editing: vi nifi-env.sh  
+    e) Scroll down until you see the export JAVA_HOME line and remove the comment (#) marker  
+    f) Replace everything after the = sign with your JAVA_HOME path  
+    g) Click escape key and save the file: shift-colon, wq
+   
 1. Set NiFi credentials and start the interface
 
     a) Set NiFi credentials (This command must be run first to enable secure login to the NiFi UI):  
